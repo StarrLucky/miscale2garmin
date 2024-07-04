@@ -14,7 +14,7 @@ ExecStart=/usr/libexec/bluetooth/bluetoothd --noplugin=sap --experimental
 - Download and extract to your home directory (e.g. "/home/robert/"), make a files executable:
 ```
 $ wget https://github.com/RobertWojtowicz/miscale2garmin/archive/refs/tags/7.tar.gz -O - | tar -xz
-$ cd miscale2garmin-7
+$ cd export2garmin-7
 $ sudo chmod 755 import_tokens.py import_data.sh scanner_ble.py export_garmin.py
 $ sudo chmod 555 /etc/bluetooth
 $ sudo setcap 'cap_net_raw,cap_net_admin+eip' /usr/local/lib/python3.11/dist-packages/bluepy/bluepy-helper
