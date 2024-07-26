@@ -80,6 +80,12 @@ $ find / -name import_data.sh
 ```
 @reboot /home/robert/export2garmin-master/import_data.sh -l
 ```
+- Restart system, check if script is running in the background:
+```
+$ ps aux | grep import_data.sh
+$         655  0.0  0.0   2576   900 ?        Ss   14:07   0:00 /bin/sh -c /home/robert/export2garmin-master/import_data.sh -l
+$         659  0.0  0.1   7196  3524 ?        S    14:07   0:00 /bin/bash /home/robert/export2garmin-master/import_data.sh -l
+```
 
 ### 2.3.4. How to increase BLE range
 - Purchase a cheap USB bluetooth 5.0/5.1 (tested on RTL8761B chipset, manufacturer Zexmte, works with Miscale and Omron module);
