@@ -138,13 +138,13 @@ $# find / -name import_data.sh
 ```
 @reboot /home/robert/export2garmin-master/import_data.sh -l
 ```
-- Restart system, check if script is running in the background:
+- Restart system, check if script is running in background:
 ```
 $ ps aux | grep import_data.sh
 $         655  0.0  0.0   2576   900 ?        Ss   14:07   0:00 /bin/sh -c /home/robert/export2garmin-master/import_data.sh -l
 $         659  0.0  0.1   7196  3524 ?        S    14:07   0:00 /bin/bash /home/robert/export2garmin-master/import_data.sh -l
 ```
-- If you want to temporarily disable script or execute it manually (until system restarts) run command: `sudo pkill -f import_data.sh`;
+- If you want to temporarily disable script or execute it manually (until system restarts) run command: `sudo pkill -f import_data.sh`
 - Back to [README](https://github.com/RobertWojtowicz/export2garmin/blob/master/README.md).
 
 ## 3. Mobile App

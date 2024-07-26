@@ -101,7 +101,7 @@ $ find / -name import_data.sh
 ```
 @reboot /home/robert/export2garmin-master/import_data.sh -l
 ```
-- Restart system, check if script is running in the background:
+- Restart system, check if script is running in background:
 ```
 $ ps aux | grep import_data.sh
 $         655  0.0  0.0   2576   900 ?        Ss   14:07   0:00 /bin/sh -c /home/robert/export2garmin-master/import_data.sh -l
