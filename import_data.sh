@@ -164,6 +164,8 @@ while [ $loop_count -eq 0 ] || [ $i -lt $loop_count ] ; do
 				fi
 			fi
 		fi
+		unset unixtime_miscale time_zone offset_miscale cut_miscale unixtime_os time_shift_miscale time_tag_miscale time_dif_miscale absolute_dif_miscale absolute_shift_miscale
+		unset import_miscale calc_data_miscale import_data_miscale import_diff_miscale check_line email_user weight_last weight_import weight_diff	
 	else echo "$($timenow) MISCALE * Module is off"
 	fi
 
@@ -260,6 +262,7 @@ while [ $loop_count -eq 0 ] || [ $i -lt $loop_count ] ; do
 				sed -i "s/failed;$import_data_omron/uploaded;import_data_omron;$data_time_omron;$time_shift_omron/; s/to_import;$import_data_omron/uploaded;$import_data_omron;$data_time_omron;$time_shift_omron/" $path/user/omron_backup.csv
 			fi
 		fi
+		unset import_omron import_data_omron data_time_omron unixtime_os time_shift_omron
 	else echo "$($timenow) OMRON * Module is off"
 	fi
 	if [ $loop_count -eq 1 ] ; then
