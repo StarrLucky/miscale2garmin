@@ -82,14 +82,9 @@ WantedBy=multi-user.target
 ```
 - Activate usbip-attach service and run it:
 ```
-$ sudo systemctl enable usbip-attach.service
-$ sudo systemctl start usbip-attach.service
+$ sudo systemctl enable usbip-attach.service && sudo systemctl start usbip-attach.service
 ```
-- You can check if usbip-attach service works `sudo systemctl status usbip-attach.service` or temporarily stop/start it with commands:
-```
-$ sudo systemctl stop usbip-attach.service
-$ sudo systemctl start usbip-attach.service
-```
+- You can check if export2garmin service works `sudo systemctl status usbip-attach.service` or temporarily stop it with command `sudo systemctl stop usbip-attach.service`;
 - Go to next part of instructions, select module:
   - [Miscale - Debian 12 | Raspberry Pi OS](https://github.com/RobertWojtowicz/export2garmin/blob/master/manuals/Miscale_BLE.md);
   - [Omron - Debian 12 | Raspberry Pi OS](https://github.com/RobertWojtowicz/export2garmin/blob/master/manuals/Omron_BLE.md).

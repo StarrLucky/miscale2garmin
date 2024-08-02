@@ -113,14 +113,9 @@ WantedBy=multi-user.target
 ```
 - Activate Export2Garmin service and run it:
 ```
-$ sudo systemctl enable export2garmin.service
-$ sudo systemctl start export2garmin.service
+sudo systemctl enable export2garmin.service && sudo systemctl start export2garmin.service
 ```
-- You can check if export2garmin service works `sudo systemctl status export2garmin.service` or temporarily stop/start it with commands:
-```
-$ sudo systemctl stop export2garmin.service
-$ sudo systemctl start export2garmin.service
-```
+- You can check if export2garmin service works `sudo systemctl status export2garmin.service` or temporarily stop it with command `sudo systemctl stop export2garmin.service`.
 
 ### 2.1.5. How to increase BLE range
 - Purchase a cheap USB bluetooth:
