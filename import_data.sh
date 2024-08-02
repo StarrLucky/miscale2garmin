@@ -223,7 +223,6 @@ while [ $loop_count -eq 0 ] || [ $i -lt $loop_count ] ; do
 
 		# Upload to Garmin Connect, print to temp.log file
 		if grep -q "failed\|to_import" $path/user/omron_backup.csv ; then
-
 			if [ $import_data_miscale_switch == "on" ] ; then
 				python3 -B $path/omron/omron_export.py >> /dev/shm/temp.log 2>&1
 				import_omron=`awk -F ": " '/OMRON /*/ Import data:/{print substr($2,1,10)}' /dev/shm/temp.log`
