@@ -76,13 +76,13 @@ while [ $loop_count -eq 0 ] || [ $i -lt $loop_count ] ; do
 				else
 					if [ ! -f /dev/shm/temp.log ] ; then
 						echo "$($timenow) MISCALE * No BLE devices found to scan, restarting bluetooth service" 2>&1 | tee /dev/shm/temp.log
-						sudo systemctl restart bluetooth
+						sudo systemctl restart bluetooth.service
 						read_miscale=`python3 -B $path/miscale/miscale_ble.py | awk 'END{print}'`
 						unixtime_miscale=`echo $read_miscale | awk -F ";" '{print $1}'`
 					elif grep -q "bluetooth" /dev/shm/temp.log ; then
 						echo "$($timenow) MISCALE * Again, no BLE devices found to scan"
 					else echo "$($timenow) MISCALE * No BLE devices found to scan, restarting bluetooth service" 2>&1 | tee /dev/shm/temp.log
-						sudo systemctl restart bluetooth
+						sudo systemctl restart bluetooth.service
 						read_miscale=`python3 -B $path/miscale/miscale_ble.py | awk 'END{print}'`
 						unixtime_miscale=`echo $read_miscale | awk -F ";" '{print $1}'`
 					fi
