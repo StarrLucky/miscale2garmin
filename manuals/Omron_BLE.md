@@ -71,22 +71,35 @@ OMRON * Import data: 1721231144;email@email.com;17.07.2024;17:45;82;118;65;0;0
 OMRON * Export date time: 17.07.2024;17:47
 OMRON * Upload status: OK
 ```
-- Finally, if everything works correctly add script import_data.sh to CRON, make sure about path:
+- Finally, if everything works correctly add script import_data.sh as a service, make sure about path:
 ```
 $ find / -name import_data.sh
 /home/robert/export2garmin-master/import_data.sh
 ```
-- To run it at system startup in an infinite loop, `sudo crontab -e` enter previously searched path to import_data.sh (choose an editor, easiest is nano):
+- To run it at system startup in an infinite loop, `sudo nano /etc/systemd/system/export2garmin.service` enter previously searched path to import_data.sh:
 ```
-@reboot /home/robert/export2garmin-master/import_data.sh -l
+[Unit]
+Description=Export2Garmin service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/home/robert/export2garmin-master/import_data.sh -l
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
 ```
-- Restart system, check if script is running in background:
+- Activate Export2Garmin service and run it:
 ```
-$ ps aux | grep import_data.sh
-$         655  0.0  0.0   2576   900 ?        Ss   14:07   0:00 /bin/sh -c /home/robert/export2garmin-master/import_data.sh -l
-$         659  0.0  0.1   7196  3524 ?        S    14:07   0:00 /bin/bash /home/robert/export2garmin-master/import_data.sh -l
+$ sudo systemctl enable export2garmin.service
+$ sudo systemctl start export2garmin.service
 ```
-- If you want to temporarily disable script or execute it manually (until system restarts) run command: `sudo pkill -f import_data.sh`.
+- You can check if export2garmin service works `sudo systemctl status export2garmin.service` or temporarily stop/start it with commands:
+```
+$ sudo systemctl stop export2garmin.service
+$ sudo systemctl start export2garmin.service
+```
 
 ### 2.3.4. How to increase BLE range
 - Purchase a cheap USB bluetooth 5.0/5.1 (tested on RTL8761B chipset, manufacturer Zexmte, works with Miscale and Omron module);

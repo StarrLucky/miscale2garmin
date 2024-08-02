@@ -129,22 +129,35 @@ MISCALE * Import data: 1721076654;55.2;508
 MISCALE * Calculated data: 15.07.2024;22:50;55.2;18.7;10.8;46.7;2.6;61.2;7;4;19;1217;51.1;64.4;to_gain:6.8;23.4;508;email@email.com;15.07.2024;23:00
 MISCALE * Upload status: OK
 ```
-- Finally, if everything works correctly add script import_data.sh to CRON, make sure about path of import_data.sh script:
+- Finally, if everything works correctly add script import_data.sh as a service, make sure about path:
 ```
 $# find / -name import_data.sh
 /home/robert/export2garmin-master/import_data.sh
 ```
-- To run it at system startup in an infinite loop, `sudo crontab -e` enter previously searched path to import_data.sh (choose an editor, easiest is nano):
+- To run it at system startup in an infinite loop, `sudo nano /etc/systemd/system/export2garmin.service` enter previously searched path to import_data.sh:
 ```
-@reboot /home/robert/export2garmin-master/import_data.sh -l
+[Unit]
+Description=Export2Garmin service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/home/robert/export2garmin-master/import_data.sh -l
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
 ```
-- Restart system, check if script is running in background:
+- Activate Export2Garmin service and run it:
 ```
-$ ps aux | grep import_data.sh
-$         655  0.0  0.0   2576   900 ?        Ss   14:07   0:00 /bin/sh -c /home/robert/export2garmin-master/import_data.sh -l
-$         659  0.0  0.1   7196  3524 ?        S    14:07   0:00 /bin/bash /home/robert/export2garmin-master/import_data.sh -l
+$ sudo systemctl enable export2garmin.service
+$ sudo systemctl start export2garmin.service
 ```
-- If you want to temporarily disable script or execute it manually (until system restarts) run command: `sudo pkill -f import_data.sh`
+- You can check if export2garmin service works `sudo systemctl status export2garmin.service` or temporarily stop/start it with commands:
+```
+$ sudo systemctl stop export2garmin.service
+$ sudo systemctl start export2garmin.service
+```
 - Back to [README](https://github.com/RobertWojtowicz/export2garmin/blob/master/README.md).
 
 ## 3. Mobile App
