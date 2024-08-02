@@ -205,7 +205,7 @@ while [ $loop_count -eq 0 ] || [ $i -lt $loop_count ] ; do
 					break
 				fi
 			done
-			if [ -f "/dev/shm/omron_user1.csv" ] || [ -f "/dev/shm/omron_user2.csv" ]; then
+			if [ -f "/dev/shm/omron_user1.csv" ] || [ -f "/dev/shm/omron_user2.csv" ] ; then
 				echo "$($timenow) OMRON * Prepare data for omron_backup.csv file"
 				awk -F ';' 'NR==FNR{a[$2];next}!($2 in a)' $path/user/omron_backup.csv /dev/shm/omron_user1.csv > /dev/shm/omron_users.csv
 				awk -F ';' 'NR==FNR{a[$2];next}!($2 in a)' $path/user/omron_backup.csv /dev/shm/omron_user2.csv >> /dev/shm/omron_users.csv
