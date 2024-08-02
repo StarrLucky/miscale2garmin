@@ -87,8 +87,8 @@ $ sudo systemctl enable usbip-attach.service && sudo systemctl start usbip-attac
 - You can check if export2garmin service works `sudo systemctl status usbip-attach.service` or temporarily stop it with command `sudo systemctl stop usbip-attach.service`;
 - Go to next part of instructions, select module:
   - [Miscale - Debian 12 | Raspberry Pi OS](https://github.com/RobertWojtowicz/export2garmin/blob/master/manuals/Miscale_BLE.md);
-  - [Omron - Debian 12 | Raspberry Pi OS](https://github.com/RobertWojtowicz/export2garmin/blob/master/manuals/Omron_BLE.md).
-- Back to [README](https://github.com/RobertWojtowicz/export2garmin/blob/master/README.md).
+  - [Omron - Debian 12 | Raspberry Pi OS](https://github.com/RobertWojtowicz/export2garmin/blob/master/manuals/Omron_BLE.md);
+  - Back to [README](https://github.com/RobertWojtowicz/export2garmin/blob/master/README.md).
 
 ## If you like my work, you can buy me a coffee
 <a href="https://www.buymeacoffee.com/RobertWojtowicz" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
